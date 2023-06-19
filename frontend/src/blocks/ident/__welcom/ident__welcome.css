@@ -1,0 +1,14 @@
+.ident__welcome {
+  color: #fff;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .ident__welcome {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

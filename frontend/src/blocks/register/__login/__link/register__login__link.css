@@ -1,0 +1,14 @@
+.register__login__link {
+  display: block;
+  padding: 15px 0 0;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media (max-width: 768px) {
+  .register__login__link {
+    padding: 20px 0 0;
+  }
+}

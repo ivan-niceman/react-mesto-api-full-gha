@@ -1,0 +1,14 @@
+.popup__form-lable {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 -3px;
+}
+.popup__form-lable:nth-child(2) {
+  padding: 0 0 15px;
+}
+@media (max-width: 768px) {
+  .popup__form-lable:nth-child(2) {
+    padding: 0 0 10px;
+  }
+}

@@ -1,0 +1,12 @@
+.header__ident__log-out {
+  color: #a9a9a9;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0 0 0 23px;
+  transition: 0.3s;
+}
+
+.header__ident__log-out:hover {
+  opacity: 0.6;
+}

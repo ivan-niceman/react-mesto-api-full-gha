@@ -1,0 +1,14 @@
+.header__ident__user {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .header__ident__user {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
