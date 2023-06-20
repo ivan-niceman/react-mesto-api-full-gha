@@ -1,4 +1,4 @@
-export const BASE_URL = "https://nice-man.nomoredomains.rocks/";
+export const BASE_URL = "https://api.nice-man.nomoredomain.nomoredomains.work";
 
 const makeRequest = (url, method, body, token) => {
   const options = {
