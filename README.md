@@ -8,7 +8,7 @@
 
 Адрес репозитория: https://github.com/ivan-niceman/react-mesto-api-full-gha
 
-## Ссылки на проект
+# Ссылки на проект
 
 IP-адрес 158.160.55.35
 
