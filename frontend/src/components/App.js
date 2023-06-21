@@ -83,7 +83,7 @@ export default function App() {
       .authorize(email, password)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        setUserData(email);
+        setUserData({ email });
         setIsLoggedIn(true);
       })
       .catch((err) => {

@@ -10,7 +10,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.101.127
+IP-адрес 158.160.55.35
 
 Frontend https://nice-man.nomoredomains.rocks/
 
