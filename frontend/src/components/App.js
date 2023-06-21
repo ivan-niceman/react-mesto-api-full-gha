@@ -35,8 +35,8 @@ export default function App() {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
+    // const jwt = localStorage.getItem("jwt");
+    if (isLoggedIn) {
       Promise.all([api.getCurrentUser(), api.getCards()])
         .then(([data, item]) => {
           setCurrentUser(data);
@@ -57,7 +57,7 @@ export default function App() {
           if (res) {
             setUserData({ email: res.email });
             setIsLoggedIn(true);
-            navigate("/");
+            navigate("/", { replace: true });
           }
         })
         .catch((err) => {
@@ -71,7 +71,7 @@ export default function App() {
       .register(email, password)
       .then(() => {
         setStatus(true);
-        navigate("/sign-in");
+        navigate("/sign-in", { replace: true });
       })
       .catch((err) => {
         setStatus(false);
@@ -85,7 +85,7 @@ export default function App() {
       .authorize(email, password)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        setUserData(email);
+        setUserData(res);
         setIsLoggedIn(true);
       })
       .catch((err) => {
@@ -102,7 +102,7 @@ export default function App() {
       email: "",
       password: "",
     });
-    navigate("/sign-in");
+    navigate("/sign-in", { replace: true });
   }
 
   function handleEditProfileClick() {
