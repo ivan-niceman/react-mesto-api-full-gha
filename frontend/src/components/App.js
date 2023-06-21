@@ -53,7 +53,7 @@ export default function App() {
         .then((res) => {
           if (res) {
             const data = res.data;
-            setUserData({ email: data.email });
+            setUserData(res.email);
             setIsLoggedIn(true);
             navigate("/");
           }
@@ -83,7 +83,7 @@ export default function App() {
       .authorize(email, password)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        setUserData({ email });
+        setUserData(email);
         setIsLoggedIn(true);
       })
       .catch((err) => {
