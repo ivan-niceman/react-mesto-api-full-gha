@@ -11,14 +11,15 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT = 3000 } = process.env;
 
 const app = express();
-app.use(cors({
-  origin: [
-    'https://nice-man.nomoredomains.rocks',
-    'http://nice-man.nomoredomains.rocks',
-    'http://localhost:3000',
-  ],
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: [
+//     'https://nice-man.nomoredomains.rocks',
+//     'http://nice-man.nomoredomains.rocks',
+//     'http://localhost:3000',
+//   ],
+//   credentials: true,
+// }));
+app.use(cors());
 
 const allowedCors = [
   'https://nice-man.nomoredomains.rocks',
