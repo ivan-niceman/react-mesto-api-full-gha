@@ -33,5 +33,6 @@ logs
 .idea
 .vscode
 
+node_modules
 build
 .env
