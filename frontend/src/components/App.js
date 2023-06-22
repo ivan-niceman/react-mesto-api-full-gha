@@ -35,8 +35,7 @@ export default function App() {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
+    if (isLoggedIn) {
       Promise.all([api.getCurrentUser(), api.getCards()])
         .then(([userData, cardsData]) => {
           setCurrentUser(userData);
