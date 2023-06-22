@@ -21,13 +21,6 @@ const allowedCors = [
   'http://localhost:3000',
 ];
 
-// app.use(cors({
-//   origin: allowedOrigins,
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   allowedHeaders: 'Content-Type,Authorization',
-//   credentials: true,
-// }));
-
 app.use((req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;

@@ -1,12 +1,12 @@
 export default class Api {
-  constructor(baseUrl, token) {
+  constructor(baseUrl) {
     this._baseUrl = baseUrl;
-    this._token = token;
   }
 
   _getHeaders() {
+    const token = localStorage.getItem('jwt');
     return {
-      authorization: this._token,
+      authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     };
   }

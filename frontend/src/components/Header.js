@@ -28,7 +28,7 @@ export default function Header({ email, logOut }) {
             <div className="header__ident">
               <p className="header__ident__email">{email}</p>
               <Link
-                to="/sign-up"
+                to="/sign-in"
                 className="header__ident__log-out"
                 onClick={logOut}>
                 Выйти

@@ -28,14 +28,15 @@ export default function App() {
   const [currentUser, setCurrentUser] = React.useState({ name: "", about: "" });
   const [cards, setCards] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [userData, setUserData] = React.useState({ email: "" });
+  const [userData, setUserData] = React.useState("");
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [isInfoToolTip, setInfoToolTip] = React.useState(false);
   const [status, setStatus] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    if (isLoggedIn) {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
       Promise.all([api.getCurrentUser(), api.getCards()])
         .then(([userData, cardsData]) => {
           setCurrentUser(userData);
@@ -54,8 +55,8 @@ export default function App() {
         .getUserData(jwt)
         .then((res) => {
           if (res) {
-            const data = res.data;
-            setUserData({ email: data.email });
+            // const data = res.data;
+            setUserData(res.email);
             setIsLoggedIn(true);
             navigate("/");
           }
@@ -85,7 +86,6 @@ export default function App() {
       .authorize(email, password)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        // setUserData(email);
         setUserData(res.data);
         setIsLoggedIn(true);
       })
@@ -103,7 +103,6 @@ export default function App() {
       email: "",
       password: "",
     });
-    navigate("/sign-in");
   }
 
   function handleEditProfileClick() {
@@ -131,7 +130,7 @@ export default function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some(id => id === currentUser._id);
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
@@ -151,12 +150,12 @@ export default function App() {
       .catch((err) => console.log(err));
   }
 
-  function handleUpdateUser({ name, about }) {
+  function handleUpdateUser(data) {
     setIsLoading(true);
     api
-      .setUserInfo({ name, about })
-      .then((data) => {
-        setCurrentUser(data);
+      .setUserInfo(data)
+      .then((newData) => {
+        setCurrentUser(newData);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
@@ -175,10 +174,10 @@ export default function App() {
       .finally(() => setIsLoading(false));
   }
 
-  function handleAddPlaceSubmit(card) {
+  function handleAddPlaceSubmit(name, link) {
     setIsLoading(true);
     api
-      .createNewCard(card)
+      .createNewCard(name, link)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
@@ -214,7 +213,7 @@ export default function App() {
       <div className="App">
         <Header
           isLoggedIn={isLoggedIn}
-          email={userData.email}
+          email={userData}
           logOut={logOut}
         />
         <Routes>
