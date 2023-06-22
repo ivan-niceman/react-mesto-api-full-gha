@@ -1,3 +1,5 @@
-const sayHello = (firstName, secondName) => `Здравствуйте, ${firstName} ${secondName}!`;
+const sayHello = (firstName, secondName) => {
+  return `Здравствуйте, ${firstName} ${secondName}!`;
+};
 
 module.exports = sayHello;

@@ -1,4 +1,5 @@
-export const BASE_URL = "https://api.nice-man.nomoredomain.nomoredomains.work";
+// export const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = "http://api.nice-man.nomoredomain.nomoredomains.work";
 
 const makeRequest = (url, method, body, token) => {
   const options = {
