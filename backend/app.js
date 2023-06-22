@@ -12,20 +12,20 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
-const allowedOrigins = [
-  'https://nice-man.nomoredomains.rocks',
-  'http://nice-man.nomoredomains.rocks',
-  // 'http://localhost:3000',
-];
+app.use(cors());
 
-// app.use(cors());
+// const allowedOrigins = [
+//   'https://nice-man.nomoredomains.rocks',
+//   'http://nice-man.nomoredomains.rocks',
+//   'http://localhost:3000',
+// ];
 
-app.use(cors({
-  origin: allowedOrigins,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: 'Content-Type,Authorization',
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: allowedOrigins,
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   allowedHeaders: 'Content-Type,Authorization',
+//   credentials: true,
+// }));
 
 // mongoose.connect('mongodb://localhost:27017/mestodb');
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
