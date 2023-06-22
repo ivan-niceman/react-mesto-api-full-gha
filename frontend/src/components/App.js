@@ -35,15 +35,18 @@ export default function App() {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    Promise.all([api.getCurrentUser(), api.getCards()])
-      .then(([data, item]) => {
-        setCurrentUser(data);
-        setCards(item);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      Promise.all([api.getCurrentUser(), api.getCards()])
+        .then(([data, item]) => {
+          setCurrentUser(data);
+          setCards(item);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isLoggedIn]);
 
   React.useEffect(() => {
     const jwt = localStorage.getItem("jwt");

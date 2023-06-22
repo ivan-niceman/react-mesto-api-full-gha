@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const rateLimit = require('express-rate-limit');
 const router = require('./routes');
 const serverError = require('./errors/servererror');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 
@@ -25,7 +26,12 @@ app.use(express.json());
 
 app.use(limiter);
 
+app.use(requestLogger);
+
 app.use(router);
+
+app.use(errorLogger);
+
 app.use(errors());
 app.use(serverError);
 

@@ -88,5 +88,6 @@ export default class Api {
 export const api = new Api(
   // "https://mesto.nomoreparties.co/v1/cohort-61",
   // "666d34ff-30b6-4309-9a25-485bb128c35e"
-  "https://api.nice-man.nomoredomain.nomoredomains.work"
+  // "https://api.nice-man.nomoredomain.nomoredomains.work"
+  "http://localhost:3000"
 );
