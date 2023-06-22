@@ -38,9 +38,9 @@ export default function App() {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       Promise.all([api.getCurrentUser(), api.getCards()])
-        .then(([data, item]) => {
-          setCurrentUser(data);
-          setCards(item);
+        .then(([userData, cardsData]) => {
+          setCurrentUser(userData);
+          setCards(cardsData);
         })
         .catch((err) => {
           console.log(err);
@@ -86,7 +86,8 @@ export default function App() {
       .authorize(email, password)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        setUserData(email);
+        // setUserData(email);
+        setUserData(res.data);
         setIsLoggedIn(true);
       })
       .catch((err) => {
