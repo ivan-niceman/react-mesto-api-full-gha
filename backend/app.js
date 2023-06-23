@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
@@ -16,8 +17,8 @@ app.use(cors({
   origin: [
     'https://nice-man.nomoredomains.rocks',
     'http://nice-man.nomoredomains.rocks',
-    'localhost:3000',
-    'http://localhost:3000',
+    'localhost:3001',
+    'http://localhost:3001',
   ],
   credentials: true,
 }));

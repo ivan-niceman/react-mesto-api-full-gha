@@ -13,7 +13,7 @@ export default function AddPlacePopup({
   React.useEffect(() => {
     setName("");
     setLink("");
-  }, []);
+  }, [isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
