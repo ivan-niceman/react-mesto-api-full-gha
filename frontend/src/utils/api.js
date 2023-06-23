@@ -4,9 +4,8 @@ export default class Api {
   }
 
   _getHeaders() {
-    const token = localStorage.getItem('jwt');
     return {
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
       "Content-Type": "application/json",
     };
   }
@@ -88,6 +87,6 @@ export default class Api {
 export const api = new Api(
   // "https://mesto.nomoreparties.co/v1/cohort-61",
   // "666d34ff-30b6-4309-9a25-485bb128c35e"
-  // "http://localhost:3000"
-  "https://api.nice-man.nomoredomain.nomoredomains.work"
+  "http://localhost:3000"
+  // "https://api.nice-man.nomoredomain.nomoredomains.work"
 );

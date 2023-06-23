@@ -3,7 +3,7 @@ const helmet = require('helmet');
 const { errors } = require('celebrate');
 const mongoose = require('mongoose');
 const rateLimit = require('express-rate-limit');
-// const cors = require('cors');
+const cors = require('cors');
 const router = require('./routes');
 const serverError = require('./errors/servererror');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -12,36 +12,20 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
-// app.use(cors());
+app.use(cors({
+  origin: [
+    'https://nice-man.nomoredomains.rocks',
+    'http://nice-man.nomoredomains.rocks',
+    'localhost:3000',
+    'http://localhost:3000',
+  ],
+  credentials: true,
+}));
 
-const allowedCors = [
-  'https://nice-man.nomoredomains.rocks',
-  'http://nice-man.nomoredomains.rocks',
-  'localhost:3000',
-  'http://localhost:3000',
-];
-
-app.use((req, res, next) => {
-  const { origin } = req.headers;
-  const { method } = req;
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  const requestHeaders = req.headers['access-control-request-headers'];
-
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', 'true');
-  } else {
-    res.header('Access-Control-Allow-Origin', '*');
-  }
-
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-
-    return res.end();
-  }
-
-  next();
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
 });
 
 // mongoose.connect('mongodb://localhost:27017/mestodb');

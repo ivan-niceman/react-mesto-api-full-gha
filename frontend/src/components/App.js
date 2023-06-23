@@ -55,7 +55,6 @@ export default function App() {
         .getUserData(jwt)
         .then((res) => {
           if (res) {
-            // const data = res.data;
             setUserData(res.email);
             setIsLoggedIn(true);
             navigate("/");
